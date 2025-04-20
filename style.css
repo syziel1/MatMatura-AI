@@ -1,0 +1,384 @@
+/* Podstawowe style */
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f7f6; /* Jasnoszare tło */
+    color: #333; /* Ciemnoszary tekst */
+    line-height: 1.6; /* Poprawa czytelności */
+}
+
+/* Nagłówek */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: #0056b3; /* Ciemniejszy niebieski */
+    color: white;
+    padding: 20px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2em;
+    font-weight: 600;
+}
+
+/* Selektor poziomu */
+.level-selector {
+    margin-top: 20px;
+}
+
+.level-selector span {
+    margin-right: 10px;
+    font-size: 1em;
+}
+
+.level-button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #e0e0e0; /* Jasnoszary */
+    color: #333;
+    margin: 0 5px;
+    font-size: 0.95em;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.level-button:hover {
+    background-color: #d0d0d0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.level-button.active {
+    background-color: #ffffff; /* Biały dla aktywnego */
+    color: #0056b3; /* Ciemnoniebieski tekst */
+    font-weight: bold;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Siatka z przyciskami */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsywna siatka, minimalna szerokość 300px */
+    gap: 25px; /* Większe odstępy */
+}
+
+.grid-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px; /* Bardziej zaokrąglone rogi */
+    padding: 25px;
+    text-align: left;
+    text-decoration: none; /* Usuwa podkreślenie linków */
+    color: inherit; /* Dziedziczy kolor tekstu */
+    box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column; /* Elementy wewnątrz jeden pod drugim */
+    justify-content: space-between; /* Rozciąga zawartość */
+}
+
+.grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+}
+
+.grid-item h2 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #0056b3; /* Ciemnoniebieski tytuł */
+}
+
+.grid-item p {
+    font-size: 0.95em;
+    line-height: 1.5;
+    flex-grow: 1; /* Opis zajmuje dostępną przestrzeń */
+    margin-bottom: 20px; /* Odstęp przed paskiem postępu */
+}
+
+/* Pasek postępu */
+.progress-container {
+    width: 100%;
+    background-color: #e9ecef; /* Bardzo jasny szary */
+    border-radius: 6px;
+    height: 22px; /* Wysokość kontenera */
+    margin-top: auto; /* Pasek na dole */
+    position: relative; /* Do pozycjonowania etykiety */
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%; /* Początkowa szerokość */
+    height: 100%;
+    background-color: #28a745; /* Zielony kolor paska */
+    border-radius: 6px; /* Zaokrąglenie */
+    transition: width 0.5s ease-in-out;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.progress-label {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    line-height: 22px; /* Wyśrodkowanie pionowe */
+    color: #333;
+    font-size: 0.85em;
+    font-weight: bold;
+    z-index: 1; /* Etykieta nad paskiem */
+    text-shadow: 0 1px 1px rgba(255,255,255,0.5); /* Lekki cień dla czytelności */
+}
+
+/* Style dla strony sekcji (section.html) */
+.section-content {
+    background-color: #fff;
+    padding: 30px 40px;
+    margin: 20px auto;
+    max-width: 900px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.section-content h1 {
+    color: #0056b3;
+    margin-top: 0;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    font-size: 1.8em; /* Dopasowanie rozmiaru */
+}
+
+.theory-section, .quiz-section {
+    margin-bottom: 40px;
+}
+
+.theory-section h3, .quiz-section h3 {
+    color: #333; /* Ciemniejszy nagłówek sekcji */
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee; /* Delikatne podkreślenie */
+}
+
+/* Stylizacja treści teorii */
+#theory-content h4 {
+    color: #0056b3;
+    margin-top: 25px; /* Większy odstęp przed podtytułem */
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+#theory-content ul {
+    padding-left: 25px; /* Większe wcięcie listy */
+    margin-bottom: 15px;
+    list-style: disc; /* Użycie standardowych punktorów */
+}
+#theory-content li {
+    margin-bottom: 8px; /* Odstęp między elementami listy */
+    line-height: 1.6;
+}
+#theory-content p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+#theory-content b { /* Pogrubienie w teorii */
+    font-weight: 600;
+}
+
+/* Przycisk "Oznacz jako przeczytane" */
+#mark-read-button {
+    padding: 12px 25px;
+    background-color: #28a745; /* Zielony */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+#mark-read-button:hover:not(:disabled) {
+    background-color: #218838; /* Ciemniejszy zielony */
+}
+#mark-read-button:disabled {
+     background-color: #cccccc;
+     cursor: not-allowed;
+     opacity: 0.7;
+}
+#theory-status {
+    font-style: italic;
+    margin-top: 8px;
+    color: #555;
+    font-size: 0.9em;
+}
+
+/* Stylizacja bloku pytania w quizie */
+.quiz-question {
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: #f8f9fa; /* Bardzo jasny szary tła pytania */
+    border-left: 5px solid #0056b3; /* Niebieski akcent z lewej */
+    border-radius: 6px;
+}
+.quiz-question p { /* Tekst pytania */
+    margin: 0 0 15px 0; /* Odstęp pod tekstem pytania */
+    line-height: 1.6;
+}
+.quiz-question p b { /* Numer pytania */
+    margin-right: 8px;
+    color: #0056b3;
+    font-weight: bold;
+}
+
+/* Stylizacja opcji odpowiedzi (DIV) */
+.quiz-options {
+    margin-top: 15px;
+}
+
+.quiz-option { /* Stylizacja DIV jako przycisku */
+     display: block;
+     margin: 8px 0; /* Większy odstęp */
+     padding: 12px 18px; /* Większy padding */
+     background-color: #e9ecef; /* Jasnoszary */
+     border: 1px solid #ced4da; /* Subtelna ramka */
+     border-radius: 6px;
+     cursor: pointer;
+     width: 100%;
+     box-sizing: border-box;
+     text-align: left;
+     transition: background-color 0.2s ease, border-color 0.2s ease;
+     min-height: 1.6em; /* Minimalna wysokość dla formuł */
+     line-height: 1.6;
+}
+.quiz-option:hover {
+    background-color: #dee2e6;
+    border-color: #adb5bd;
+}
+.quiz-option.selected { /* Zaznaczona opcja */
+     border-color: #0056b3;
+     background-color: #cfe2ff; /* Jaśniejszy niebieski */
+     font-weight: 500;
+}
+
+/* Style po sprawdzeniu odpowiedzi */
+.quiz-option.correct { /* Poprawna odpowiedź */
+    background-color: #d1e7dd !important; /* Jaśniejszy zielony */
+    border-color: #198754 !important; /* Ciemniejszy zielony */
+    color: #0f5132; /* Bardzo ciemny zielony tekst */
+    font-weight: bold;
+}
+.quiz-option.incorrect { /* Błędny wybór użytkownika */
+     background-color: #f8d7da !important; /* Jaśniejszy czerwony */
+     border-color: #dc3545 !important; /* Czerwony */
+     color: #842029; /* Bardzo ciemny czerwony tekst */
+}
+/* Dodatkowe style dla zaznaczenia po sprawdzeniu */
+.quiz-option.correct.selected { /* Jeśli wybrano poprawną */
+    /* Można dodać np. ikonkę ✓ */
+    .back-button:active {
+    background-color: #4e555b; /* Jeszcze ciemniejszy szary */
+    color: #fff; /* Biały tekst */
+    }
+    cursor: not-allowed; /* Zmiana kursora na nieaktywny */
+}
+.quiz-option.incorrect.selected { /* Jeśli wybrano błędną */
+     font-weight: normal; /* Usuń pogrubienie z .selected, bo i tak jest źle */
+     /* Można dodać np. ikonkę ✗ */
+}
+
+/* Stylizacja inputu tekstowego */
+.quiz-options input[type="text"] {
+    width: 100%;
+    padding: 10px 12px; /* Dopasowanie paddingu */
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    font-size: 1em;
+}
+.quiz-options input[type="text"]:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+.quiz-options input[type="text"].correct { /* Styl dla poprawnej odpowiedzi tekstowej */
+    background-color: #d1e7dd !important;
+    border-color: #198754 !important;
+}
+.quiz-options input[type="text"].incorrect { /* Styl dla błędnej odpowiedzi tekstowej */
+     background-color: #f8d7da !important;
+     border-color: #dc3545 !important;
+}
+
+
+/* Przyciski pod quizem (przeniesione style inline) */
+#submit-quiz-button, #retry-incorrect-button {
+    padding: 12px 25px;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    margin-right: 10px; /* Odstęp między przyciskami */
+    margin-top: 20px; /* Wspólny margines górny */
+}
+
+#submit-quiz-button {
+   background-color: #007bff; /* Niebieski */
+}
+#submit-quiz-button:hover {
+    background-color: #0056b3;
+}
+
+#retry-incorrect-button {
+   background-color: #ffc107; /* Żółty/Pomarańczowy */
+   color: #333; /* Ciemniejszy tekst dla kontrastu */
+   /* Usunięto specyficzny margin-top, używamy wspólnego */
+}
+#retry-incorrect-button:hover {
+    background-color: #e0a800;
+}
+
+/* Klasa do ukrywania/pokazywania przycisków */
+.hidden {
+    display: none !important;
+}
+.visible {
+    display: inline-block !important; /* Używamy inline-block dla przycisków obok siebie */
+}
+
+
+/* Wyniki quizu */
+#quiz-results {
+    margin-top: 25px;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+}
+#quiz-results.hidden { /* Ukrywanie diva wyników */
+    display: none;
+}
+
+/* Przycisk powrotu */
+.back-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: #6c757d; /* Szary */
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    font-size: 0.95em;
+}
+.back-button:hover {
+    background-color: #5a6268; /* Ciemniejszy szary */
+}

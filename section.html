@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sekcja Kursu</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="section-content">
+        <h1 id="section-title">Ładowanie...</h1>
+
+        <div class="theory-section">
+            <h3>Teoria</h3>
+            <div id="theory-content">
+                <p>Ładowanie teorii...</p>
+            </div>
+            <button id="mark-read-button">Oznacz teorię jako przeczytaną (20%)</button>
+            <p id="theory-status"></p>
+        </div>
+
+        <div class="quiz-section">
+            <h3>Ćwiczenia (Quiz)</h3>
+            <div id="quiz-container">
+                <p>Ładowanie quizu...</p>
+            </div>
+             <button id="submit-quiz-button" class="hidden">Sprawdź odpowiedzi</button>
+             <button id="retry-incorrect-button" class="hidden">Powtórz błędne zadania</button>
+            <div id="quiz-results" class="hidden"></div>
+        </div>
+
+        <a href="index.html" class="back-button">Powrót do strony głównej</a>
+    </div>
+
+    <script src="section.js"></script>
+</body>
+</html>
