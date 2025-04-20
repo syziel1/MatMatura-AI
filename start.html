@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matura Master - Start</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body.start-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            background-color: #e9f5ff; /* Jasnoniebieskie tło */
+        }
+        .start-container {
+            background-color: #fff;
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+        }
+        .start-container h1 {
+            color: #0056b3;
+            margin-bottom: 15px;
+        }
+        .start-container p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        .start-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .start-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        .dashboard-link {
+            display: block;
+            margin-top: 25px;
+            color: #0056b3;
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+        .dashboard-link:hover {
+            text-decoration: underline;
+        }
+        /* Ukrywanie elementów przed inicjalizacją JS */
+        .js-hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="start-page">
+
+    <div class="start-container">
+        <div id="welcome-new" class="js-hidden">
+            <h1>Witaj w Matura Master!</h1>
+            <p>Wygląda na to, że jesteś tu pierwszy raz. Skonfigurujmy Twój plan nauki, abyś mógł/mogła zacząć przygotowania!</p>
+            <a href="config.html" id="config-button" class="start-button">Rozpocznij konfigurację</a>
+        </div>
+
+        <div id="welcome-back" class="js-hidden">
+            <h1 id="greeting">Witaj ponownie!</h1>
+            <p>Dziś skupiamy się na:</p>
+            <h2 id="current-topic" style="color: #0056b3; margin-bottom: 30px;">Ładowanie tematu...</h2>
+            <a href="#" id="start-lesson-button" class="start-button">Rozpocznij lekcję!</a>
+            <a href="kokpit.html" class="dashboard-link">Przejdź do kokpitu</a>
+        </div>
+    </div>
+
+    <script src="start.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matura Master - Kokpit</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Matura Master - Kokpit</h1>
+        <div class="level-selector">
+            <span>Wybrany poziom:</span>
+            <button id="level-pp" class="level-button" data-level="pp">Podstawowy</button>
+            <button id="level-pr" class="level-button" data-level="pr">Rozszerzony</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="dashboard-stats">
+            <div class="stat-item">
+                <div class="value" id="days-left-value">--</div>
+                <div class="label">Dni do matury</div>
+            </div>
+            <div class="stat-item">
+                <div class="value" id="current-week-value">--</div>
+                <div class="label">Bieżący tydzień nauki</div>
+            </div>
+            <div class="stat-item">
+                <div class="value" id="overall-progress-value">--%</div>
+                <div class="label">Całkowity postęp</div>
+            </div>
+            </section>
+
+        <section class="progress-comparison">
+            <h3>Postęp w nauce</h3>
+            <div class="progress-bar-wrapper">
+                <div class="progress-bar-expected" id="progress-expected"></div>
+                <div class="progress-bar-actual red" id="progress-actual">
+                    <span id="progress-actual-label">0%</span>
+                </div>
+            </div>
+            <div class="progress-legend">
+                <span class="expected-label">Postęp oczekiwany (<span id="progress-expected-label">--%</span>)</span>
+                <span class="actual-label" id="actual-label-legend">Postęp rzeczywisty (<span id="progress-actual-value-legend">--%</span>)</span>
+            </div>
+        </section>
+
+        <h2>Plan Nauki i Narzędzia</h2>
+        <div class="grid-container">
+            <a href="section.html?week=1" class="grid-item" id="week-1">
+                <h2>Tydzień 1: Liczby Rzeczywiste i Zbiory</h2>
+                <p>Własności liczb, przedziały, procenty, potęgi, pierwiastki, logarytmy, wartość bezwzględna, zbiory.</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-week-1"></div>
+                    <span class="progress-label" id="label-week-1">0%</span>
+                </div>
+            </a>
+            <a href="section.html?week=2" class="grid-item" id="week-2"><h2>Tydzień 2: Wyrażenia Algebraiczne...</h2><p>...</p><div class="progress-container"><div class="progress-bar" id="progress-week-2"></div><span class="progress-label" id="label-week-2">0%</span></div></a>
+             <a href="section.html?week=3" class="grid-item" id="week-3"><h2>Tydzień 3: Funkcja Liniowa i Kwadratowa</h2><p>...</p><div class="progress-container"><div class="progress-bar" id="progress-week-3"></div><span class="progress-label" id="label-week-3">0%</span></div></a>
+             <a href="section.html?week=4" class="grid-item" id="week-4"><h2>Tydzień 4: Wielomiany...</h2><p>...</p><div class="progress-container"><div class="progress-bar" id="progress-week-4"></div><span class="progress-label" id="label-week-4">0%</span></div></a>
+             <a href="section.html?week=5" class="grid-item" id="week-5"><h2>Tydzień 5: Funkcje Wykładnicze...</h2><p>...</p><div class="progress-container"><div class="progress-bar" id="progress-week-5"></div><span class="progress-label" id="label-week-5">0%</span></div></a>
+             <a href="section.html?week=6" class="grid-item" id="week-6"><h2>Tydzień 6: Trygonometria</h2><p>...</p><div class="progress-container"><div class="progress-bar" id="progress-week-6"></div><span class="progress-label" id="label-week-6">0%</span></div></a>
+             <a href="section.html?week=7" class="grid-item" id="week-7"><h2>Tydzień 7: Ciągi Liczbowe</h2><p>...</p><div class="progress-container"><div class="progress-bar" id="progress-week-7"></div><span class="progress-label" id="label-week-7">0%</span></div></a>
+             <a href="section.html?week=8" class="grid-item" id="week-8"><h2>Tydzień 8: Planimetria</h2><p>...</p><div class="progress-container"><div class="progress-bar" id="progress-week-8"></div><span class="progress-label" id="label-week-8">0%</span></div></a>
+             <a href="section.html?week=9" class="grid-item" id="week-9"><h2>Tydzień 9: Geometria Analityczna...</h2><p>...</p><div class="progress-container"><div class="progress-bar" id="progress-week-9"></div><span class="progress-label" id="label-week-9">0%</span></div></a>
+             <a href="section.html?week=10" class="grid-item" id="week-10"><h2>Tydzień 10: Statystyka i Prawdopodobieństwo</h2><p>...</p><div class="progress-container"><div class="progress-bar" id="progress-week-10"></div><span class="progress-label" id="label-week-10">0%</span></div></a>
+            <a href="compendium.html" class="grid-item" id="compendium">
+                <h2>Kompendium Maturalne</h2>
+                <p>Wszystko o maturze: struktura, typy zadań, zasady, karta wzorów, wymagania, wskazówki.</p>
+            </a>
+            <a href="mock_exam.html" class="grid-item" id="mock-exam">
+                <h2>Matura Próbna</h2>
+                <p>Sprawdź się! Rozwiąż arkusz z poprzednich lat lub losowy zestaw zadań.</p>
+            </a>
+        </div>
+    </main>
+
+    <script src="kokpit.js"></script>
+</body>
+</html>

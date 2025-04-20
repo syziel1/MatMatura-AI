@@ -382,3 +382,125 @@ header h1 {
 .back-button:hover {
     background-color: #5a6268; /* Ciemniejszy szary */
 }
+
+.error-message {
+    color: #dc3545; /* Czerwony */
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: none; /* Domyślnie ukryty */
+}
+
+.dashboard-stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+}
+.stat-item {
+    text-align: center;
+    padding: 10px 20px;
+}
+.stat-item .value {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #0056b3;
+    line-height: 1.1;
+}
+.stat-item .label {
+    font-size: 0.95em;
+    color: #555;
+    margin-top: 5px;
+}
+.progress-comparison {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+}
+.progress-comparison h3 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+}
+.progress-bar-wrapper {
+    width: 100%;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    height: 30px; /* Grubszy pasek */
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px; /* Odstęp pod paskiem */
+}
+.progress-bar-expected {
+    width: 0%; /* Ustawiane przez JS */
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.15); /* Półprzezroczyste tło dla oczekiwanego */
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    border-radius: 8px;
+    transition: width 0.5s ease-in-out;
+}
+.progress-bar-actual {
+    width: 0%; /* Ustawiane przez JS */
+    height: 100%;
+    background-color: #dc3545; /* Domyślnie czerwony */
+    border-radius: 8px;
+    transition: width 0.5s ease-in-out, background-color 0.5s ease;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2; /* Nad paskiem oczekiwanym */
+    display: flex; /* Do wyśrodkowania etykiety */
+    align-items: center;
+    justify-content: center;
+}
+.progress-bar-actual span { /* Etykieta wewnątrz paska */
+    color: white;
+    font-weight: bold;
+    font-size: 0.9em;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+}
+.progress-legend {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85em;
+    color: #555;
+    padding: 0 5px;
+}
+.progress-legend .expected-label::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+ .progress-legend .actual-label::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #ffc107; /* Kolor legendy - zmieniany dynamicznie */
+    border-radius: 3px;
+    margin-right: 5px;
+    vertical-align: middle;
+    border: 1px solid #ccc; /* Ramka dla jasnych kolorów */
+}
+/* Kolory dla paska aktualnego postępu */
+.progress-bar-actual.red { background-color: #dc3545; }
+.progress-bar-actual.orange { background-color: #fd7e14; }
+.progress-bar-actual.yellow { background-color: #ffc107; }
+.progress-bar-actual.light-green { background-color: #6fbf73; } /* Jaśniejszy zielony */
+.progress-bar-actual.green { background-color: #28a745; } /* Główny zielony */
+.progress-bar-actual.dark-green { background-color: #198754; } /* Ciemniejszy zielony */

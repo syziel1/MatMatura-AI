@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matura Master - Konfiguracja</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body.config-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #e9f5ff; /* Jasnoniebieskie tło */
+            padding: 20px;
+        }
+        .config-container {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 550px;
+            width: 100%;
+        }
+        .config-container h1 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="date"] { /* Jeśli dodamy datę urodzenia */
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+        .form-group .radio-group label {
+            display: inline-block;
+            margin-right: 15px;
+            font-weight: normal;
+            cursor: pointer;
+        }
+         .form-group .radio-group input[type="radio"] {
+            margin-right: 5px;
+            cursor: pointer;
+         }
+        .config-button {
+            display: block; /* Przycisk na całą szerokość */
+            width: 100%;
+            padding: 14px 25px;
+            background-color: #28a745; /* Zielony */
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 30px; /* Odstęp na górze */
+        }
+        .config-button:hover {
+            background-color: #218838; /* Ciemniejszy zielony */
+            transform: translateY(-2px);
+        }
+        .error-message {
+            color: #dc3545; /* Czerwony */
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none; /* Domyślnie ukryty */
+        }
+    </style>
+</head>
+<body class="config-page">
+
+    <div class="config-container">
+        <h1>Konfiguracja Planu</h1>
+        <form id="config-form">
+            <div class="form-group">
+                <label for="name">Twoje imię:</label>
+                <input type="text" id="name" name="name" required placeholder="Wpisz swoje imię">
+                <div class="error-message" id="name-error">Imię jest wymagane.</div>
+            </div>
+
+            <div class="form-group">
+                <label>Kiedy zdajesz maturę?</label>
+                <div class="radio-group" id="matura-year-group">
+                    <p>Ładowanie opcji...</p>
+                </div>
+                 <div class="error-message" id="matura-year-error">Wybierz rok matury.</div>
+            </div>
+
+            <div class="form-group">
+                <label>Na jakim poziomie zdajesz matematykę?</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="level" value="pp" required> Podstawowy
+                    </label>
+                    <label>
+                        <input type="radio" name="level" value="pr"> Rozszerzony
+                    </label>
+                </div>
+                 <div class="error-message" id="level-error">Wybierz poziom matury.</div>
+            </div>
+
+            <button type="submit" class="config-button">Zapisz i kontynuuj</button>
+        </form>
+    </div>
+
+    <script src="config.js"></script>
+</body>
+</html>
