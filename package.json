@@ -1,0 +1,21 @@
+{
+  "name": "matmatura-ai",
+  "version": "2.0.0",
+  "description": "MatMatura-AI - Comprehensive web application for Polish mathematics matura exam preparation",
+  "main": "start.html",
+  "scripts": {
+    "build": "echo 'Build complete - no build step required for static HTML/CSS/JS application'",
+    "start": "echo 'This is a static HTML application. Open start.html in a web browser to run.'",
+    "test": "echo 'No tests configured'"
+  },
+  "keywords": [
+    "education",
+    "mathematics",
+    "matura",
+    "learning"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {}
+}
