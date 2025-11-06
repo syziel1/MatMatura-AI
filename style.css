@@ -280,10 +280,6 @@ header h1 {
 /* Dodatkowe style dla zaznaczenia po sprawdzeniu */
 .quiz-option.correct.selected { /* Jeśli wybrano poprawną */
     /* Można dodać np. ikonkę ✓ */
-    .back-button:active {
-    background-color: #4e555b; /* Jeszcze ciemniejszy szary */
-    color: #fff; /* Biały tekst */
-    }
     cursor: not-allowed; /* Zmiana kursora na nieaktywny */
 }
 .quiz-option.incorrect.selected { /* Jeśli wybrano błędną */
@@ -504,3 +500,484 @@ header h1 {
 .progress-bar-actual.light-green { background-color: #6fbf73; } /* Jaśniejszy zielony */
 .progress-bar-actual.green { background-color: #28a745; } /* Główny zielony */
 .progress-bar-actual.dark-green { background-color: #198754; } /* Ciemniejszy zielony */
+/* ============================================
+   NOTIFICATION SYSTEM STYLES
+   ============================================ */
+
+/* Notification container */
+.notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+}
+
+/* Individual notification */
+.notification {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    transform: translateX(400px);
+    transition: all 0.3s ease;
+    border-left: 4px solid #333;
+}
+
+.notification-show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.notification-hide {
+    opacity: 0;
+    transform: translateX(400px);
+}
+
+/* Notification types */
+.notification-success {
+    border-left-color: #28a745;
+}
+
+.notification-error {
+    border-left-color: #dc3545;
+}
+
+.notification-warning {
+    border-left-color: #ffc107;
+}
+
+.notification-info {
+    border-left-color: #007bff;
+}
+
+/* Notification icon */
+.notification-icon {
+    font-size: 1.5em;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.notification-success .notification-icon {
+    color: #28a745;
+}
+
+.notification-error .notification-icon {
+    color: #dc3545;
+}
+
+.notification-warning .notification-icon {
+    color: #ffc107;
+}
+
+.notification-info .notification-icon {
+    color: #007bff;
+}
+
+/* Notification message */
+.notification-message {
+    flex: 1;
+    font-size: 0.95em;
+    line-height: 1.4;
+    color: #333;
+}
+
+/* Notification close button */
+.notification-close {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: #999;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.notification-close:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* ============================================
+   DIALOG SYSTEM STYLES
+   ============================================ */
+
+/* Dialog overlay */
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.dialog-show {
+    opacity: 1;
+}
+
+/* Dialog box */
+.dialog-box {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 90%;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.dialog-show .dialog-box {
+    transform: scale(1);
+}
+
+/* Dialog content */
+.dialog-content {
+    padding: 30px;
+}
+
+.dialog-message {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #333;
+    margin: 0 0 25px 0;
+    text-align: center;
+}
+
+/* Dialog buttons */
+.dialog-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.dialog-button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 100px;
+}
+
+.dialog-button-cancel {
+    background-color: #e9ecef;
+    color: #333;
+}
+
+.dialog-button-cancel:hover {
+    background-color: #dee2e6;
+}
+
+.dialog-button-confirm {
+    background-color: #007bff;
+    color: white;
+}
+
+.dialog-button-confirm:hover {
+    background-color: #0056b3;
+}
+
+/* ============================================
+   LOADER SYSTEM STYLES
+   ============================================ */
+
+/* Loader overlay */
+.loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10002;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.loader-show {
+    opacity: 1;
+}
+
+/* Loader container */
+.loader-container {
+    text-align: center;
+}
+
+/* Loader spinner */
+.loader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #e9ecef;
+    border-top-color: #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Loader message */
+.loader-message {
+    font-size: 1.1em;
+    color: #333;
+    margin: 0;
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+
+/* Focus styles for better keyboard navigation */
+button:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* Skip to main content link (for screen readers) */
+.skip-to-main {
+    position: absolute;
+    left: -9999px;
+    z-index: 999;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+}
+
+.skip-to-main:focus {
+    left: 10px;
+    top: 10px;
+}
+
+/* Screen reader only text */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ============================================
+   RESPONSIVE IMPROVEMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    /* Notification container on mobile */
+    .notification-container {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+
+    .notification {
+        padding: 12px 16px;
+    }
+
+    /* Dialog on mobile */
+    .dialog-box {
+        width: 95%;
+        margin: 10px;
+    }
+
+    .dialog-content {
+        padding: 20px;
+    }
+
+    .dialog-buttons {
+        flex-direction: column;
+    }
+
+    .dialog-button {
+        width: 100%;
+    }
+
+    /* Grid improvements */
+    .grid-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    /* Header improvements */
+    header h1 {
+        font-size: 1.6em;
+    }
+
+    .level-button {
+        padding: 8px 14px;
+        font-size: 0.9em;
+    }
+
+    /* Section content on mobile */
+    .section-content {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .section-content h1 {
+        font-size: 1.4em;
+    }
+}
+
+/* ============================================
+   DARK MODE SUPPORT
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+    body.dark-mode {
+        background-color: #1a1a1a;
+        color: #e0e0e0;
+    }
+
+    body.dark-mode header {
+        background-color: #2c3e50;
+    }
+
+    body.dark-mode .grid-item,
+    body.dark-mode .section-content,
+    body.dark-mode .notification {
+        background-color: #2a2a2a;
+        border-color: #444;
+        color: #e0e0e0;
+    }
+
+    body.dark-mode .dialog-box {
+        background-color: #2a2a2a;
+        color: #e0e0e0;
+    }
+
+    body.dark-mode .dialog-button-cancel {
+        background-color: #444;
+        color: #e0e0e0;
+    }
+
+    body.dark-mode .loader-overlay {
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    body.dark-mode .quiz-question {
+        background-color: #333;
+        border-left-color: #4a90e2;
+    }
+
+    body.dark-mode .quiz-option {
+        background-color: #333;
+        border-color: #555;
+        color: #e0e0e0;
+    }
+
+    body.dark-mode .quiz-option:hover {
+        background-color: #3a3a3a;
+    }
+
+    body.dark-mode .progress-container {
+        background-color: #333;
+    }
+}
+
+/* ============================================
+   ANIMATION UTILITIES
+   ============================================ */
+
+/* Fade in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+/* Slide in from right */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.slide-in-right {
+    animation: slideInRight 0.3s ease;
+}
+
+/* Pulse animation for important elements */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* ============================================
+   ERROR STYLING FOR FORM FIELDS
+   ============================================ */
+
+input.error,
+select.error,
+textarea.error {
+    border-color: #dc3545 !important;
+    background-color: #fff5f5;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.85em;
+    margin-top: 5px;
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+}
