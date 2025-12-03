@@ -133,6 +133,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (weekNumber === '1') {
             sectionSpecificTitle = ": Liczby Rzeczywiste i Zbiory";
             loadTheory_Week1(); // Ładuje HTML teorii
+        } else if (weekNumber === '6') {
+            sectionSpecificTitle = ": Trygonometria";
+            loadTheory_Week6(); // Ładuje HTML teorii dla Tygodnia 6
         } else {
            sectionSpecificTitle = ": Brak danych";
            if (theoryContentElement) {
@@ -153,6 +156,10 @@ document.addEventListener('DOMContentLoaded', () => {
              loadQuiz_Week1(); // Tworzy elementy quizu w DOM
              if(submitQuizButton) submitQuizButton.classList.remove('hidden');
              displayRetryButtonIfNeeded();
+        } else if (weekNumber === '6') {
+             loadQuiz_Week6(); // Tworzy elementy quizu w DOM dla Tygodnia 6
+             if(submitQuizButton) submitQuizButton.classList.remove('hidden');
+             displayRetryButtonIfNeeded();
         } else {
               if(quizContainer) quizContainer.innerHTML = '<p>Brak quizu dla tej sekcji.</p>';
               if(submitQuizButton) submitQuizButton.classList.add('hidden');
@@ -164,6 +171,227 @@ document.addEventListener('DOMContentLoaded', () => {
         typesetQuizContent();
         console.log('Zakończono ładowanie treści sekcji (bez czekania na MathJax).');
     }
+
+    /**
+     * Ładuje treść teorii dla Tygodnia 6: Trygonometria.
+     */
+    function loadTheory_Week6() {
+        if (!theoryContentElement) {
+            console.error('Nie można załadować teorii - brak elementu #theory-content.');
+            return;
+        }
+        console.log('Funkcja loadTheory_Week6 - rozpoczęto.');
+        
+        let theoryHtml = `
+            <h4>Definicje Funkcji Trygonometrycznych</h4>
+            <p><b>W trójkącie prostokątnym</b> (dla kąta ostrego $\\alpha$):</p>
+            <ul>
+                <li>Sinus: $\\sin(\\alpha) = \\frac{\\text{przyprostokątna naprzeciw}}{\\text{przeciwprostokątna}}$</li>
+                <li>Cosinus: $\\cos(\\alpha) = \\frac{\\text{przyprostokątna przyległa}}{\\text{przeciwprostokątna}}$</li>
+                <li>Tangens: $\\tan(\\alpha) = \\frac{\\text{przyprostokątna naprzeciw}}{\\text{przyprostokątna przyległa}}$</li>
+            </ul>
+            <p><b>Na okręgu jednostkowym</b> (dla dowolnego kąta $\\alpha$):</p>
+            <ul>
+                <li>$\sin(\\alpha) = y$ (współrzędna pionowa punktu na okręgu)</li>
+                <li>$\cos(\\alpha) = x$ (współrzędna pozioma punktu na okręgu)</li>
+                <li>$\tan(\\alpha) = \\frac{y}{x}$ (dla $x \\neq 0$)</li>
+            </ul>
+
+            <h4>Podstawowe Właściwości i Tożsamości</h4>
+            <ul>
+                <li>Jedynka trygonometryczna: $\\sin^2(\\alpha) + \\cos^2(\\alpha) = 1$</li>
+                <li>Związki: $\\tan(\\alpha) = \\frac{\\sin(\\alpha)}{\\cos(\\alpha)}$</li>
+                <li>Okresowość: $\\sin(x+2\\pi) = \\sin(x)$, $\\cos(x+2\\pi) = \\cos(x)$, $\\tan(x+\\pi) = \\tan(x)$</li>
+            </ul>
+            
+            <h4>Wykresy Funkcji (Wizualizacja)</h4>
+            <p>Wykresy funkcji trygonometrycznych są kluczowe do zrozumienia ich okresowości, dziedziny i zbioru wartości. Poniżej interaktywny wykres funkcji sinus i cosinus (Chart.js).</p>
+            
+            <div style="height: 400px; margin-top: 20px; margin-bottom: 20px;">
+                <canvas id="trigChart"></canvas>
+            </div>
+
+            <script>
+                // Funkcja do generowania danych dla Chart.js
+                const generateTrigData = () => {
+                    const step = Math.PI / 12;
+                    const xMin = -2 * Math.PI;
+                    const xMax = 2 * Math.PI;
+                    const labels = [];
+                    const cosinusData = [];
+                    const sinusData = [];
+
+                    for (let x = xMin; x <= xMax; x += step) {
+                        labels.push((x / Math.PI).toFixed(2) + 'π');
+                        cosinusData.push(Math.cos(x));
+                        sinusData.push(Math.sin(x));
+                    }
+                    return { labels, cosinusData, sinusData };
+                };
+
+                const { labels, cosinusData, sinusData } = generateTrigData();
+
+                const ctx = document.getElementById('trigChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'cos(x)',
+                                data: cosinusData,
+                                borderColor: 'rgba(9, 132, 227, 1)', // Niebieski
+                                backgroundColor: 'rgba(9, 132, 227, 0.1)',
+                                borderWidth: 2,
+                                pointRadius: 0,
+                                tension: 0.4,
+                                fill: false
+                            },
+                            {
+                                label: 'sin(x)',
+                                data: sinusData,
+                                borderColor: 'rgba(232, 67, 147, 1)', // Różowy
+                                backgroundColor: 'rgba(232, 67, 147, 0.1)',
+                                borderWidth: 2,
+                                pointRadius: 0,
+                                tension: 0.4,
+                                fill: false
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: true },
+                            title: { display: true, text: 'Wykresy sin(x) i cos(x)' }
+                        },
+                        scales: {
+                            x: {
+                                title: { display: true, text: 'x (radiany)' },
+                                ticks: {
+                                    callback: function(value, index) {
+                                        return index % 6 === 0 ? labels[index] : '';
+                                    }
+                                }
+                            },
+                            y: {
+                                title: { display: true, text: 'y' },
+                                min: -1.2,
+                                max: 1.2
+                            }
+                        }
+                    }
+                });
+            </script>
+
+            ${selectedLevel === 'pr' ? `
+                <h4>(PR) Wzory Redukcyjne i Równania Trygonometryczne</h4>
+                <p><b>Wzory redukcyjne</b> pozwalają sprowadzić funkcje kątów większych niż $90^\circ$ do funkcji kątów ostrych. Np.:</p>
+                <ul>
+                    <li>$\sin(90^\circ - \\alpha) = \\cos(\\alpha)$</li>
+                    <li>$\cos(180^\circ - \\alpha) = -\\cos(\\alpha)$</li>
+                </ul>
+                <p><b>Równania trygonometryczne</b> (np. $\sin(x) = a$):</p>
+                <ul>
+                    <li>$\sin(x) = a \\implies x = \\alpha + 2k\\pi \\lor x = \\pi - \\alpha + 2k\\pi$</li>
+                    <li>$\cos(x) = a \\implies x = \\alpha + 2k\\pi \\lor x = -\\alpha + 2k\\pi$</li>
+                </ul>
+            ` : ''}
+        `;
+        theoryContentElement.innerHTML = theoryHtml;
+        console.log(`Funkcja loadTheory_Week6 - zakończono. Długość HTML: ${theoryHtml.length}`);
+        typesetTheoryContent();
+    }
+
+    /**
+     * Ładuje pytania quizowe dla Tygodnia 6: Trygonometria.
+     */
+    function loadQuiz_Week6(retryMode = false) {
+        if (!quizContainer) {
+             console.error('Nie można załadować quizu - brak elementu #quiz-container.');
+             return;
+        }
+        console.log(`Funkcja loadQuiz_Week6 - rozpoczęto (retryMode: ${retryMode}).`);
+        quizContainer.innerHTML = ''; // Wyczyść stary quiz
+        if (quizResultsElement) quizResultsElement.innerHTML = ''; // Wyczyść wyniki
+        if (submitQuizButton) submitQuizButton.classList.add('hidden'); // Ukryj przyciski
+        if (retryIncorrectButton) retryIncorrectButton.classList.add('hidden');
+
+         const allQuestions_Week6_PP = [
+             { id: 'w6pp1', text: 'Oblicz wartość wyrażenia $\\sin(30^\\circ) + \\cos(60^\\circ)$.', type: 'radio', options: ['0', '1/2', '1', '$\\sqrt{3}$'], correct: '1'},
+             { id: 'w6pp2', text: 'W trójkącie prostokątnym przyprostokątna naprzeciw kąta $\\alpha$ ma długość 3, a przeciwprostokątna 5. Ile wynosi $\\sin(\\alpha)$?', type: 'radio', options: ['3/5', '4/5', '3/4', '5/3'], correct: '3/5'},
+             { id: 'w6pp3', text: 'Wartość wyrażenia $\\sin^2(45^\\circ) + \\cos^2(45^\\circ)$ jest równa:', type: 'radio', options: ['0', '$\\frac{1}{2}$', '1', '2'], correct: '1'},
+         ];
+         const allQuestions_Week6_PR = [
+             { id: 'w6pr1', text: 'Okresem podstawowym funkcji $f(x) = \\sin(2x)$ jest:', type: 'radio', options: ['$\\pi$', '$2\\pi$', '$\\frac{\\pi}{2}$', '$4\\pi$'], correct: '$\\pi$'},
+             { id: 'w6pr2', text: 'Rozwiąż równanie $\\cos(x) = -\\frac{1}{2}$ dla $x \\in [0, 2\\pi]$.', type: 'radio', options: ['$\\frac{2\\pi}{3}, \\frac{4\\pi}{3}$', '$\\frac{\\pi}{3}, \\frac{5\\pi}{3}$', '$\\frac{7\\pi}{6}, \\frac{11\\pi}{6}$', '$\\frac{5\\pi}{6}, \\frac{7\\pi}{6}$'], correct: '$\\frac{2\\pi}{3}, \\frac{4\\pi}{3}$'},
+             { id: 'w6pr3', text: 'Wiedząc, że $\\alpha$ jest kątem ostrym i $\\sin(\\alpha) = \\frac{1}{3}$, oblicz $\\cos(\\alpha)$.', type: 'radio', options: ['$\\frac{2\\sqrt{2}}{3}$', '$\\frac{\\sqrt{8}}{3}$', '$\\frac{2}{3}$', '$\\frac{\\sqrt{3}}{3}$'], correct: '$\\frac{2\\sqrt{2}}{3}$'},
+         ];
+        let questionsPool = selectedLevel === 'pr' ? allQuestions_Week6_PR : allQuestions_Week6_PP;
+
+        // Wybór pytań
+         questionsToRetry = sectionProgress.incorrectQuestions || []; // Upewnij się, że mamy listę
+         if (retryMode && questionsToRetry.length > 0) {
+            currentQuizQuestions = questionsPool.filter(q => questionsToRetry.includes(q.id));
+             if (currentQuizQuestions.length === 0) {
+                 quizContainer.innerHTML = '<p>Gratulacje! Brak pytań do powtórzenia w tym dziale.</p>';
+                 return;
+             }
+             console.log("Tryb powtórki, pytania:", currentQuizQuestions.map(q=>q.id));
+        } else {
+            currentQuizQuestions = [...questionsPool];
+            // questionsToRetry = []; // Nie resetuj tutaj, bo potrzebne w submit listenerze
+            console.log("Tryb normalny, pytania:", currentQuizQuestions.map(q=>q.id));
+        }
+
+        // Generowanie HTML
+        currentQuizQuestions.forEach((q, index) => {
+            const questionElement = document.createElement('div');
+            questionElement.classList.add('quiz-question');
+            questionElement.setAttribute('data-question-id', q.id);
+
+            const questionText = document.createElement('p');
+            questionText.innerHTML = `<b>${index + 1}.</b> ${q.text}`;
+            questionElement.appendChild(questionText);
+
+            const optionsElement = document.createElement('div');
+            optionsElement.classList.add('quiz-options');
+
+            if (q.type === 'radio') {
+                 q.options.forEach(option => {
+                     const optionDiv = document.createElement('div'); // Używamy DIV
+                     optionDiv.classList.add('quiz-option');
+                     optionDiv.innerHTML = option;
+                     optionDiv.setAttribute('data-value', option);
+                     optionDiv.onclick = () => {
+                         const siblings = optionsElement.querySelectorAll('.quiz-option');
+                         siblings.forEach(sib => sib.classList.remove('selected'));
+                         optionDiv.classList.add('selected');
+                     };
+                     optionsElement.appendChild(optionDiv);
+                 });
+            } else if (q.type === 'text') {
+                 const input = document.createElement('input');
+                 input.type = 'text';
+                 input.placeholder = 'Wpisz odpowiedź...';
+                 // Dodajemy klasy do stylizacji po sprawdzeniu
+                 input.classList.add('quiz-input-text');
+                 optionsElement.appendChild(input);
+            }
+            questionElement.appendChild(optionsElement);
+            quizContainer.appendChild(questionElement);
+        });
+
+        // Pokaż przycisk sprawdzania
+        if(submitQuizButton) submitQuizButton.classList.remove('hidden');
+        console.log('Funkcja loadQuiz_Week6 - zakończono dodawanie elementów.');
+        // Renderowanie MathJax zostanie wywołane przez typesetQuizContent()
+    }
+
+    /**
+     * Ładuje treść teorii dla Tygodnia 1.
+     */
 
     /**
      * Ładuje treść teorii dla Tygodnia 1.
